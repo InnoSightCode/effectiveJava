@@ -45,7 +45,7 @@ public class FinalizeTest {
 
 이 코드를 실행하면, 객체가 가비지 컬렉션될 때 **`finalize`** 메서드가 호출되고, 각 객체의 **`id`**가 출력됩니다. 그러나 객체가 생성된 순서대로 **`finalize`** 메서드가 호출된다는 보장은 없습니다. 가비지 컬렉션의 순서는 JVM의 구현에 따라 다를 수 있습니다.
 
-![image.png](image.png)
+![image](https://github.com/user-attachments/assets/e814b9a7-4578-4c6b-a95c-478d4ec84880)
 
 **`finalize` 메서드를 사용하지 말아야 하는 이유는 여러 가지가 있습니다. 다음은 그 주요 이유들입니다:**
 
@@ -109,8 +109,8 @@ public class CleanerTest {
 }
 
 ```
+![image](https://github.com/user-attachments/assets/6778671b-e73f-41e1-a5f1-7baddfda9508)
 
-![image.png](image%201.png)
 
 **`Cleaner`**는 **`finalize`**보다 더 예측 가능하고 안전한 자원 해제 방법을 제공하지만, 여전히 몇 가지 이유로 사용을 권장하지 않는 경우가 있습니다. 다음은 **`Cleaner`**를 사용하지 말아야 하는 이유들입니다:
 
