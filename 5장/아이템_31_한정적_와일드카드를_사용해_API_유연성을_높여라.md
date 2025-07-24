@@ -1,6 +1,6 @@
 # 아이템 31. 한정적 와일드카드를 사용해 API 유연성을 높여라
 
-## (아이템28) Parameterized Type(매개변수화 타입)은 invariant(불공변)이다?
+## Parameterized Type(매개변수화 타입)은 invariant(불공변)이다? (from 아이템28) 
 
 제네릭을 사용하면서 ‘타입 파라미터(Type Parameter)와 매개변수화 타입(Parameterized Type)이라는 용어가 등장한다. 
 
@@ -75,7 +75,7 @@ Apple a = apples.get(0);      // Banana를 Apple로 꺼내게 되면? 런타임 
 ```
 
 원칙적으로는 개발자가 잘 관리하면 문제는 없지만, 자바는 ‘사람은 실수한다’는 전제를 바탕으로 타입 안정성을 지키기 위해 불공변(invariant) 규칙을 강제한다.
-<BR>
+<BR><BR>
 
 ## 제네릭에서 다형성을 이용하려면 “한정적 와일드카드”를 이용
 
@@ -97,7 +97,7 @@ public class Stack<E> {
 }
 ```
 
-> CASE1 : Stack<Integer>, Iterable<Integer>
+> CASE1 : `Stack<Integer>`, `Iterable<Integer>`
 > 
 
 문제 없음
@@ -113,7 +113,7 @@ public class Main {
 }
 ```
 
-> CASE2 : Stack<Number>, Interable<Integer>
+> CASE2 : `Stack<Number>`, `Interable<Integer>`
 > 
 
 위에서 설명했듯이 Parameterized Type(매개변수화 타입)은 invariant(불공변)이기 때문에 컴파일 오류 발생
@@ -195,7 +195,7 @@ public class Stack<E> {
 }
 ```
 
-> CASE3 : Stack<Number>, Collection<Number>
+> CASE3 : `Stack<Number>`, `Collection<Number>`
 > 
 
 문제 없음
@@ -214,8 +214,9 @@ public class Main {
 }
 ```
 
-> CASE4 : Stack<Number>, Collection<Object>
-> 
+
+> CASE4 : `Stack<Number>`, `Collection<Object>`
+>
 
 위에서 설명했듯이 Parameterized Type(매개변수화 타입)은 invariant(불공변)이기 때문에 컴파일 오류 발생
 
@@ -260,7 +261,7 @@ E의 상위 타입의 Collection → `Collection<? super E>`
 CASE4도 문제 없이 컴파일된다.
 
 결론적으로, '한정적 와일드카드'를 이용하면 제네릭에도 다형성을 적용할 수 있게 되므로, API의 유연성을 높일 수 있다!!!
-<BR>
+<BR><BR>
 
 
 ## 한정적 와일드카드 형태 결정하기 : 펙스(PECS)
@@ -280,7 +281,7 @@ public void popAll(Collection<? super E> destination)
 - 소비자 : 데이터를 넣는 역할
     - <? super E>를 사용
     - E의 상위 타입에 E를 안전하게 넣을 수 있음
-<BR>
+<BR><BR>
 
 ## 비한정적 와일드카드  <?>
 
@@ -343,8 +344,9 @@ private static <E> void swapHelper(List<E> list, int i, int j) {
     list.set(i, list.set(j, list.get(i)); 
 }
 ```
+<BR><BR>
 
-# LETS 코드 예시
+## LETS 코드 예시
 
 ```
     SDS                LGL
@@ -402,10 +404,9 @@ public class SdsEdiTypeContext {
     }
 ```
 
-![{1B0C235D-3320-432E-A846-35A19144B297}.png](attachment:45460236-a273-49cf-9c9a-74ad464c875b:1B0C235D-3320-432E-A846-35A19144B297.png)
+<img width="802" height="439" alt="image" src="https://github.com/user-attachments/assets/0fdb0a65-810b-4bf5-a5d4-10f89ac51348" />
 
 > LetsSdsSftpController.java
-> 
 
 ```java
     /**
